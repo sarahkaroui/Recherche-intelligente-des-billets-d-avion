@@ -1,0 +1,131 @@
+{
+  "name": "Trigger_n8n",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8005/recherche-billets",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "DE",
+              "value": "={{ $json.DE }}"
+            },
+            {
+              "name": "AR",
+              "value": "={{ $json.AR }}"
+            },
+            {
+              "name": "date",
+              "value": "={{ $json.date }}"
+            },
+            {
+              "name": "Description",
+              "value": "={{ $json.Notes }}"
+            },
+            {
+              "name": "PrixMax",
+              "value": "={{ $json.Prix_Max }}"
+            },
+            {
+              "name": "Escala",
+              "value": "={{ $json.Escale }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "03da75ad-7ea2-45c6-9996-3ccab828f082",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "formTitle": "Recherche_Billets",
+        "formDescription": "Merci de remplir ce formulaire pour votre demande de mission. Les billets d'avion seront automatiquement recherchés à partir des données fournies.\n\n",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "DE",
+              "placeholder": "Entrez votre point de départ",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "AR",
+              "placeholder": "Entrez votre point d'arrivée",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "date",
+              "fieldType": "date",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Prix_Max",
+              "fieldType": "number",
+              "placeholder": "Quel est votre budget pour ce vol?"
+            },
+            {
+              "fieldLabel": "Notes",
+              "placeholder": "Préférences sur le vol"
+            },
+            {
+              "fieldLabel": "Escale",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "oui"
+                  },
+                  {
+                    "option": "non"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e08625b3-a831-42eb-8db0-7d72a0bde321",
+      "name": "Formulaire",
+      "webhookId": "592c4fd3-3474-4574-8455-e2e1dbabd2c2"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Formulaire": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "55354674-6010-463a-a1a6-382be08d5d0b",
+  "meta": {
+    "instanceId": "0aac7802af0d8aa30ba6bfe0d402166c7b86b03ff637a2a996b72e17d9eec39e"
+  },
+  "id": "vSayag92Ni7Pn2zb",
+  "tags": []
+}
