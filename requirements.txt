@@ -1,0 +1,11 @@
+playwright
+langchain
+pandas
+fastapi
+uvicorn
+langchain_core
+langchain_ollama
+langchain_chroma
+python-docx
+langchain-openai
+langchain-community 
